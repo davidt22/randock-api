@@ -4,8 +4,62 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "05b05fea46938e7aa0346f370a84283a",
+    "content-hash": "757bba46127e16a2e9889c8ee391a3a9",
     "packages": [
+        {
+            "name": "abraham/twitteroauth",
+            "version": "0.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/abraham/twitteroauth.git",
+                "reference": "1c05f38b7780c9e6d3938b3f2ac2f3fd9d810825"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/abraham/twitteroauth/zipball/1c05f38b7780c9e6d3938b3f2ac2f3fd9d810825",
+                "reference": "1c05f38b7780c9e6d3938b3f2ac2f3fd9d810825",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "2.2.*",
+                "phpunit/phpunit": "4.7.*",
+                "squizlabs/php_codesniffer": "2.3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Abraham\\TwitterOAuth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abraham Williams",
+                    "email": "abraham@abrah.am",
+                    "homepage": "https://abrah.am",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The most popular PHP library for use with the Twitter OAuth REST API.",
+            "homepage": "https://twitteroauth.com",
+            "keywords": [
+                "Twitter API",
+                "Twitter oAuth",
+                "api",
+                "oauth",
+                "rest",
+                "social",
+                "twitter"
+            ],
+            "time": "2015-08-18T15:56:04+00:00"
+        },
         {
             "name": "composer/ca-bundle",
             "version": "1.1.0",
@@ -1470,6 +1524,51 @@
             "time": "2017-01-02T13:31:39+00:00"
         },
         {
+            "name": "renus/last-tweet",
+            "version": "dev-master",
+            "target-dir": "Renus/LastTweetBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/renus/last-tweet.git",
+                "reference": "1e10fa85a27dce1f6338e36d34752170052222e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/renus/last-tweet/zipball/1e10fa85a27dce1f6338e36d34752170052222e4",
+                "reference": "1e10fa85a27dce1f6338e36d34752170052222e4",
+                "shasum": ""
+            },
+            "require": {
+                "abraham/twitteroauth": "^0.5.3"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Renus\\LastTweetBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Renaud Mioque",
+                    "email": "renaud.mioque@gmail.com"
+                }
+            ],
+            "description": "Symfony 2 bundle to add quickly last tweets on your website",
+            "keywords": [
+                "Symfony 2 tweets twitter last tweets"
+            ],
+            "time": "2015-12-12T10:16:01+00:00"
+        },
+        {
             "name": "sensio/distribution-bundle",
             "version": "v5.0.21",
             "source": {
@@ -2588,7 +2687,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "renus/last-tweet": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
