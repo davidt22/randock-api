@@ -2,36 +2,14 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Application\Service\TwitterRequest;
+use AppBundle\Application\Service\TwitterService;
 use FOS\RestBundle\Controller\FOSRestController;
-use Renus\LastTweetBundle\Entity\Tweet;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class UsersController extends FOSRestController
 {
-    /**
-     * @Route("/users/{id}", defaults={"id" = 1})
-     * @Method({"GET"})
-     *
-     * @param $id
-     *
-     * @return array
-     */
-    public function indexAction($id)
-    {
-        $data = array('Usuarios' => array(
-            array(
-                'nombre'   => 'Jhon',
-                'Apellido' => 'Doe'
-            ),
-            array(
-                'nombre'   => 'Antonio',
-                'Apellido' => 'Martinez'
-            )));
-
-        return $data;
-    }
-
     /**
      *
      * @Route("/user/tweets/{username}/{number}", defaults={"username" = "DavidTeruel22", "number" = 20})
@@ -44,21 +22,13 @@ class UsersController extends FOSRestController
      */
     public function getUserLastTweetsAction($username, $number)
     {
-        try{
-            $twitterService = $this->get('renus.twitter');
-            $tweets = $twitterService->getLastTweets($username, $number);
+        $twitterRequest = new TwitterRequest($username, $number);
 
-            $onlyText = array();
-            /** @var Tweet $tweet */
-            foreach ($tweets as $tweet){
-                $value = array('tweet' => $tweet->getText());
+        /** @var TwitterService $twitterService */
+        $twitterService = $this->get('app.twitter_service');
 
-                array_push($onlyText, $value);
-            }
+        $tweets = $twitterService->getUserLastTweetsFormatted($twitterRequest);
 
-            return array($username => $onlyText);
-        }catch (\Exception $exception){
-            return array();
-        }
+        return $tweets;
     }
 }
