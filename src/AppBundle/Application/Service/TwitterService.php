@@ -4,23 +4,25 @@
 namespace AppBundle\Application\Service;
 
 
-use Renus\LastTweetBundle\Entity\Tweet;
-use Renus\LastTweetBundle\Service\Twitter;
+
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 class TwitterService
 {
-    /** @var Twitter */
-    private $twitterService;
+    const STATUSES_USER_TIMELINE = 'statuses/user_timeline';
+    /** @var TwitterOAuth */
+    private $oauthTwitter;
 
     /**
-     * TwitterWrapper constructor.
+     * TwitterService constructor.
      *
-     * @param Twitter $twitterService
+     * @param TwitterOAuth $oauthTwitter
      */
-    public function __construct(Twitter $twitterService)
+    public function __construct(TwitterOAuth $oauthTwitter)
     {
-        $this->twitterService = $twitterService;
+        $this->oauthTwitter = $oauthTwitter;
     }
+
 
     /**
      * @param TwitterRequest $twitterRequest
@@ -32,13 +34,14 @@ class TwitterService
         try{
             $username = $twitterRequest->getUsername();
             $number = $twitterRequest->getNumber();
+            $parameters = ['q' => $username, 'count' => $number];
 
-            $tweets = $this->twitterService->getLastTweets($username, $number);
+            $tweets = $this->oauthTwitter->get(self::STATUSES_USER_TIMELINE, $parameters);
 
             $onlyText = array();
-            /** @var Tweet $tweet */
+            /** @var \stdClass $tweet */
             foreach ($tweets as $tweet){
-                $value = array('tweet' => $tweet->getText());
+                $value = array('tweet' => $tweet->text);
 
                 array_push($onlyText, $value);
             }

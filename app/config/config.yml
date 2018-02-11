@@ -78,10 +78,3 @@ fos_rest:
         rules:
             - { path: ^/api, priorities: [ json ], fallback_format: json, prefer_extension: true }
             - { path: ^/, priorities: [ html ], fallback_format: html, prefer_extension: true }
-
-renus_last_tweet:
-    twitter:
-        consumer_key: 'W9I2Ti3pIRXZXwLBHicQWatMB'
-        consumer_secret: 'Hb0y6XIuU9m6je2OibAMwilEqAUJ8XMVmc0u4pqJoBIUNIVSPC'
-        token: '316114504-3p96DA2oJWfVLKEnzmFW2lhsrO4jZhicoEzlKQGM'
-        token_secret: 'qHYrcBXpkhI7GLuwbPjvVzkYQwFgiIpur1tMPvx1lB2Tx'
