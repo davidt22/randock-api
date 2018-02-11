@@ -22,20 +22,20 @@ class UsersController extends FOSRestController
      */
     public function getUserLastTweetsAction($username, $number)
     {
-        $cache = new FilesystemCache();
-        $cachedTweets = $cache->has('tweets.last_tweets');
+        $cache = new FilesystemCache('tweets', 300);
+        $cachedTweets = $cache->has('last_tweets');
 
         if (!$cachedTweets) {
             $tweets = $this->getTweets($username, $number);
 
-            $cache->set('tweets.last_tweets', $tweets);
+            $cache->set('last_tweets', $tweets);
         } else {
-            $tweets = $cache->get('tweets.last_tweets');
+            $tweets = $cache->get('last_tweets');
 
             if(!array_key_exists($username, $tweets)){
                 $tweets = $this->getTweets($username, $number);
 
-                $cache->set('tweets.last_tweets', $tweets);
+                $cache->set('last_tweets', $tweets);
             }
         }
 
