@@ -31,7 +31,7 @@ class UserControllerTest extends WebTestCase
     public function testApiEndpointReturnsJsonResponse()
     {
         $client = static::createClient();
-        $crawler = $client->request(Request::METHOD_GET, '/api/user/tweets/DavidTeruel/10');
+        $client->request(Request::METHOD_GET, '/api/user/tweets/DavidTeruel/10');
         $response = $client->getResponse();
 
         $this->assertTrue($response->headers->contains('Content-Type', 'application/json'));
