@@ -22,7 +22,7 @@ class UsersController extends FOSRestController
      */
     public function getUserLastTweetsAction($username, $number)
     {
-        $cache = new FilesystemCache('tweets', 10);
+        $cache = new FilesystemCache('tweets', 120);
         $cachedTweets = $cache->has('last_tweets');
 
         if (!$cachedTweets) {
