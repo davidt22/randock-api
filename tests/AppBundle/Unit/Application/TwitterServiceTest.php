@@ -2,19 +2,19 @@
 
 namespace Tests\AppBundle\Unit\Application;
 
+use Abraham\TwitterOAuth\TwitterOAuth;
 use AppBundle\Application\Service\TwitterRequest;
-use Renus\LastTweetBundle\Service\Twitter;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class TwitterServiceTest extends WebTestCase
 {
     public function testGetValidUserLastTweetsAction()
     {
-        /** @var Twitter $renusTwitterMock */
-        $renusTwitterMock = $this->createMock(Twitter::class);
+        /** @var TwitterOAuth $renusTwitterMock */
+        $renusTwitterMock = $this->createMock(TwitterOAuth::class);
         $twitterServiceMock = new TwitterServiceMock($renusTwitterMock);
         $twitterRequest = new TwitterRequest('davidTeruel22',3);
-        $tweets = $twitterServiceMock->getUserLastTweetsFormatted($twitterRequest);
+        $tweets = $twitterServiceMock->execute($twitterRequest);
 
         $this->assertInternalType('array', $tweets);
         $this->assertCount(3, $tweets['davidTeruel22']);

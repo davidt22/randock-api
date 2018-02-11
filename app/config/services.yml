@@ -36,5 +36,10 @@ services:
 
     app.twitter_service:
         class: AppBundle\Application\Service\TwitterService
-        arguments: ['@renus.twitter']
+        arguments: ['@oauth.twitter']
+        public: true
+
+    oauth.twitter:
+        class: Abraham\TwitterOAuth\TwitterOAuth
+        arguments: ['%consumer_key%', '%consumer_secret%', '%token%', '%token_secret%']
         public: true
