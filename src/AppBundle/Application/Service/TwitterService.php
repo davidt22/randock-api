@@ -41,7 +41,7 @@ class TwitterService
             $onlyText = array();
             /** @var \stdClass $tweet */
             foreach ($tweets as $tweet){
-                $value = array('tweet' => $tweet->text);
+                $value = array('tweet' => strtoupper(json_encode($tweet->text)));
 
                 array_push($onlyText, $value);
             }
