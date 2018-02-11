@@ -1,0 +1,4 @@
+api_users:
+    type: rest
+    resource: "@AppBundle/Controller/UsersController.php"
+    prefix:  api_users_
