@@ -9,7 +9,7 @@ use AppBundle\Application\Service\TwitterService;
 
 class TwitterServiceMock extends TwitterService
 {
-    public function getUserLastTweetsFormatted(TwitterRequest $twitterRequest)
+    public function execute(TwitterRequest $twitterRequest)
     {
         $data = '
             {"davidTeruel22":[

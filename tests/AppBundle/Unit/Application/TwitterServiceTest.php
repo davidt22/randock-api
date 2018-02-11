@@ -14,7 +14,7 @@ class TwitterServiceTest extends WebTestCase
         $renusTwitterMock = $this->createMock(Twitter::class);
         $twitterServiceMock = new TwitterServiceMock($renusTwitterMock);
         $twitterRequest = new TwitterRequest('davidTeruel22',3);
-        $tweets = $twitterServiceMock->getUserLastTweetsFormatted($twitterRequest);
+        $tweets = $twitterServiceMock->execute($twitterRequest);
 
         $this->assertInternalType('array', $tweets);
         $this->assertCount(3, $tweets['davidTeruel22']);

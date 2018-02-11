@@ -55,7 +55,7 @@ class UsersController extends FOSRestController
         /** @var TwitterService $twitterService */
         $twitterService = $this->get('app.twitter_service');
 
-        $tweets = $twitterService->getUserLastTweetsFormatted($twitterRequest);
+        $tweets = $twitterService->execute($twitterRequest);
         return $tweets;
     }
 }

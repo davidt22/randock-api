@@ -27,7 +27,7 @@ class TwitterService
      *
      * @return array
      */
-    public function getUserLastTweetsFormatted(TwitterRequest $twitterRequest)
+    public function execute(TwitterRequest $twitterRequest)
     {
         try{
             $username = $twitterRequest->getUsername();
